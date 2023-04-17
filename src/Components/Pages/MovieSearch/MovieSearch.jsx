@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './MovieSearch.module.css';
 
 import Movie from '../../Pages/Movie/Movie';
@@ -13,7 +13,7 @@ export default function MovieSearch() {
   const REJECTED = 'rejected';
   const [searchFilmName, setSearchFilmName] = useState('');
   const [films, setFilms] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const [status, setStatus] = useState(IDLE);
   const [error, setError] = useState(null);
@@ -50,7 +50,7 @@ export default function MovieSearch() {
     setStatus(PENDING);
     searchQuery(searchFilmName);
 
-    history.push({
+    navigate.push({
       ...location,
       search: `query=${searchFilmName}`,
     });

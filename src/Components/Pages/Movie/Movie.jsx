@@ -4,8 +4,8 @@ import {
   Route,
   NavLink,
   useParams,
-  useHistory,
-  useRouteMatch,
+  useNavigate,
+  useResolvedPath,
   useLocation,
 } from 'react-router-dom';
 
@@ -22,9 +22,9 @@ export default function Movie() {
   const RESOLVED = 'resolved';
   const REJECTED = 'rejected';
   const { movieId } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
-  const { url } = useRouteMatch();
+  const { url } = useResolvedPath();
   const [film, setFilm] = useState(null);
   const [status, setStatus] = useState(IDLE);
   const [error, setError] = useState(null);
@@ -48,7 +48,7 @@ export default function Movie() {
   }, [movieId]);
 
   function goBack() {
-    history.push(location?.state?.from ?? '/');
+    navigate.push(location?.state?.from ?? '/');
   }
 
   return (
