@@ -1,21 +1,32 @@
-import { Route, Routes, Router, Navigate } from 'react-router-dom';
-import Home from './Components/Pages/Home/Home';
-import MovieSearch from './Components/Pages/MovieSearch/MovieSearch';
-import Movie from './Components/Pages/Movie/Movie';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Container from './Components/Container/Container';
 import Header from './Components/Header/Header';
+import Loader from './Components/Loader/Loader';
+
+const Home = lazy(() => import('./Components/Pages/Home/Home'));
+const MoviesPage = lazy(() =>
+  import('./Components/Pages/MoviesPage/MoviesPage')
+);
+const MovieDetails = lazy(() =>
+  import('./Components/Pages/MovieDetails/MovieDetails')
+);
+const NotFoundView = lazy(() =>
+  import('./Components/Pages/NotFoundView/NotFoundView')
+);
 
 export default function App() {
   return (
-    <div className="App">
-      <Router>
-        <Header></Header>
+    <Container>
+      <Header />
+      <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/movies" exact component={MovieSearch} />
-          <Route path="/movies/:movieId" component={Movie} />
-          <Navigate to="/" />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/movies/" element={<MoviesPage />} />
+          <Route path="/movies/:movieId/*" element={<MovieDetails />} />
+          <Route element={<NotFoundView />} />
         </Routes>
-      </Router>
-    </div>
+      </Suspense>
+    </Container>
   );
 }

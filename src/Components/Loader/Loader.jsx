@@ -1,10 +1,4 @@
-import css from './Loader.module.css';
-
-function Loader() {
-  return (
-    <div className={css.loader}>
-      <div>...Loading...</div>
-    </div>
-  );
-}
+const Loader = () => {
+  return <div>..loading..</div>;
+};
 export default Loader;
