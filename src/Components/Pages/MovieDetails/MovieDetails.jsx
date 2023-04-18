@@ -22,11 +22,6 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
-  let locationValue = location.state;
-  if (location.state) {
-    locationValue = location.state.from;
-  }
-
   useEffect(() => {
     fetchMoviesId(movieId).then(movie => {
       setMovie(movie);
