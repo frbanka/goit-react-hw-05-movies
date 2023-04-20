@@ -9,8 +9,8 @@ import {
 } from 'react-router-dom';
 import Loader from '../../Loader/Loader';
 import { fetchMoviesId, IMAGE_URL } from '../../Api/fetch';
-import styles from '../../Navigation/Navigation.module.css';
-import '../../../styles.css';
+import css from './MovieDetails.module.css';
+import image from '../../../Images/no-image.png';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
@@ -18,14 +18,11 @@ const Reviews = lazy(() => import('../Reviews/Reviews'));
 export default function MovieDetailsPage() {
   const navigate = useNavigate();
   const location = useLocation();
-
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-
   useEffect(() => {
     fetchMoviesId(movieId).then(movie => {
       setMovie(movie);
-      // console.log(movie)
     });
   }, [movieId]);
 
@@ -38,52 +35,46 @@ export default function MovieDetailsPage() {
   };
 
   return (
-    <>
+    <div className={css.wrapper}>
       {movie && (
-        <>
-          <button type="button" className="Button" onClick={onGoBack}>
-            ⇚ Go Back
+        <container className={css.container}>
+          <button type="button" className={css.button} onClick={onGoBack}>
+            ⮜ Back
           </button>
-
-          <div className="DetailsPage">
+          <div className={css.details}>
             <img
               src={IMAGE_URL + movie.poster_path}
               alt={movie.title}
-              className="DetailsPage_img"
+              className={css.details__img}
             />
-            <div>
+            <div className={css.details__descr}>
               <h2>{movie.title}</h2>
-              <p>
+              <p className={css.details__rate}>
                 <span>Rating: </span>
                 {movie.vote_average}
               </p>
-              <p>
-                <span>Overview: </span>
+              <p className={css.details__plot}>
+                <span className={css.plot__span}>Plot: </span>
                 {movie.overview}
               </p>
-              <p>
-                <span>Genres: </span>
+              <p className={css.details__genres}>
+                <span className={css.genres__span}>Genres: </span>
                 {movie.genres.map(genre => genre.name).join(' ')}
               </p>
             </div>
           </div>
-
-          <hr />
-
           <h3>Additional information</h3>
-
-          <nav>
-            <NavLink to={`/movies/${movieId}/cast`} className={styles.link}>
+          <nav className={css.nav}>
+            <NavLink to={`/movies/${movieId}/cast`} className={css.nav__link}>
               Cast
             </NavLink>
-
-            <NavLink to={`/movies/${movieId}/reviews`} className={styles.link}>
+            <NavLink
+              to={`/movies/${movieId}/reviews`}
+              className={css.nav__link}
+            >
               Reviews
             </NavLink>
           </nav>
-
-          <hr />
-
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route
@@ -96,8 +87,8 @@ export default function MovieDetailsPage() {
               />
             </Routes>
           </Suspense>
-        </>
+        </container>
       )}
-    </>
+    </div>
   );
 }

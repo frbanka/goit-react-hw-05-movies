@@ -1,0 +1,23 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: brown;
+  height: 50px;
+}
+.link {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.link:not(:last-child) {
+  padding-left: 10px;
+}
+.link:not(:last-child):after {
+  content: '|';
+  color: white;
+  padding-left: 10px;
+}

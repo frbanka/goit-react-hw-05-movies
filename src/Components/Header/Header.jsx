@@ -1,9 +1,9 @@
 import Navigation from '../Navigation/Navigation';
-import styles from './Header.module.css';
+import css from './Header.module.css';
 
 export default function Header() {
   return (
-    <header className={styles.header}>
+    <header className={css.header}>
       <Navigation />
     </header>
   );

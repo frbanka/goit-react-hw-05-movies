@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import style from '../Searchbar/Searchbar.module.css';
+import css from './Searchbar.module.css';
 
 export default function Searchbar({ onSubmit }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -23,18 +23,18 @@ export default function Searchbar({ onSubmit }) {
   };
 
   return (
-    <header className={style.Searchbar}>
-      <form className={style.SearchForm} onSubmit={handleSubmit}>
-        <button type="submit" className={style.SearchForm_button}>
-          <span className={style.SearchForm_button_label}>Search</span>
+    <header className={css.searchbar}>
+      <form className={css.searchform} onSubmit={handleSubmit}>
+        <button type="submit" className={css.searchform__button}>
+          Search
         </button>
 
         <input
-          className={style.SearchForm_input}
+          className={css.searchform__input}
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search movies"
+          placeholder="enter movie name"
           value={searchQuery}
           onChange={handleChange}
         />

@@ -1,0 +1,10 @@
+.head {
+  font-size: 35px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

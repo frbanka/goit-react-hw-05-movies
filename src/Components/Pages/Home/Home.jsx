@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MoviesGallery from '../../MoviesGallery/MoviesGallery';
 import { fetchTrendingMovies } from '../../Api/fetch';
-import '../../../styles.css';
+import css from './Home.module.css';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -12,10 +12,10 @@ export default function Home() {
 
   // console.log(movies);
   return (
-    <>
-      <h1>Trending today</h1>
+    <div className={css.container}>
+      <h1 className={css.head}>Trending today:</h1>
 
       <MoviesGallery movies={movies} />
-    </>
+    </div>
   );
 }
