@@ -33,7 +33,6 @@ export default function MovieDetailsPage() {
     }
     navigate(`${location.state.from.pathname}${location.state.from.search}`);
   };
-
   return (
     <div className={css.wrapper}>
       {movie && (
