@@ -10,7 +10,6 @@ import {
 import Loader from '../../Loader/Loader';
 import { fetchMoviesId, IMAGE_URL } from '../../Api/fetch';
 import css from './MovieDetails.module.css';
-import image from '../../../Images/no-image.png';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
