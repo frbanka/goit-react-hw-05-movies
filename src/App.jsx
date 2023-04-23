@@ -23,8 +23,7 @@ export default function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/movies/" element={<MoviesPage />} />
-          <Route path="/movies/:movieId/*" element={<MovieDetails />}>
-          </Route>
+          <Route path="/movies/:movieId/*" element={<MovieDetails />} />
           <Route element={<NotFoundView />} />
         </Routes>
       </Suspense>

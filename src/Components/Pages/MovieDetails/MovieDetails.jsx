@@ -14,7 +14,7 @@ import image from '../../../Images/no-image.png';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
-export default function MovieDetailsPage() {
+export default function MovieDetails() {
   const navigate = useNavigate();
   const location = useLocation();
   const { movieId } = useParams();
