@@ -1,24 +1,25 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import {
   NavLink,
-  Routes,
-  Route,
   useParams,
   useNavigate,
   useLocation,
+  Route,
+  Routes,
 } from 'react-router-dom';
 import Loader from '../../Loader/Loader';
 import { fetchMoviesId, IMAGE_URL } from '../../Api/fetch';
 import css from './MovieDetails.module.css';
+import image from '../../../Images/no-image.png';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
-
 export default function MovieDetailsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+
   useEffect(() => {
     fetchMoviesId(movieId).then(movie => {
       setMovie(movie);
@@ -35,13 +36,17 @@ export default function MovieDetailsPage() {
   return (
     <div className={css.wrapper}>
       {movie && (
-        <container className={css.container}>
+        <div className={css.container}>
           <button type="button" className={css.button} onClick={onGoBack}>
             ⮜ Back
           </button>
           <div className={css.details}>
             <img
-              src={IMAGE_URL + movie.poster_path}
+              src={
+                movie.poster_path === null
+                  ? image
+                  : IMAGE_URL + movie.poster_path
+              }
               alt={movie.title}
               className={css.details__img}
             />
@@ -78,14 +83,14 @@ export default function MovieDetailsPage() {
               <Route
                 path={`/movies/${movieId}/cast`}
                 element={<Cast movieId={movieId} />}
-              />
+              ></Route>
               <Route
                 path={`/movies/${movieId}/reviews`}
                 element={<Reviews movieId={movieId} />}
-              />
+              ></Route>
             </Routes>
           </Suspense>
-        </container>
+        </div>
       )}
     </div>
   );

@@ -9,44 +9,28 @@ const MoviesGallery = ({ movies }) => {
   return (
     <ul className={css.gallery}>
       {movies.map(movie => {
-        if (movie.poster_path === null) {
-          return (
-            <li key={movie.id} className={css.gallery__item}>
-              <Link
-                to={{
-                  pathname: `/movies/${movie.id}`,
-                  state: { from: location },
-                }}
-                className={css.gallery__link}
-              >
-                <img
-                  src={image}
-                  alt={movie.title}
-                  className={css.gallery__img}
-                />
-                <p className={css.gallery__text}>{movie.title}</p>
-              </Link>
-            </li>
-          );
-        } else
-          return (
-            <li key={movie.id} className={css.gallery__item}>
-              <Link
-                to={{
-                  pathname: `/movies/${movie.id}`,
-                  state: { from: location },
-                }}
-                className={css.gallery__link}
-              >
-                <img
-                  src={IMAGE_URL + movie.poster_path}
-                  alt={movie.title}
-                  className={css.gallery__img}
-                />
-                <p className={css.gallery__text}>{movie.title}</p>
-              </Link>
-            </li>
-          );
+        return (
+          <li key={movie.id} className={css.gallery__item}>
+            <Link
+              to={{
+                pathname: `/movies/${movie.id}`,
+                state: { from: location },
+              }}
+              className={css.gallery__link}
+            >
+              <img
+                src={
+                  movie.poster_path === null
+                    ? image
+                    : IMAGE_URL + movie.poster_path
+                }
+                alt={movie.title}
+                className={css.gallery__img}
+              />
+              <p className={css.gallery__text}>{movie.title}</p>
+            </Link>
+          </li>
+        );
       })}
     </ul>
   );

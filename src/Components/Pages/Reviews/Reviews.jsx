@@ -13,7 +13,7 @@ export default function Reviews({ movieId }) {
       {reviews.length > 0 ? (
         <ul>
           {reviews.map(el => (
-            // return console.log(el);
+  
             <li key={el.id}>
               <p>
                 <span>Author: </span>
