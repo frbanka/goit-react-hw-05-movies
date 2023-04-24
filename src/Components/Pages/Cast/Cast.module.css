@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-basis: 750px;
+  list-style: none;
+  gap: 20px;
+}
+.element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.image {
+  width: 350px;
+}
+.name {
+  font-size: 24px;
+  color: brown;
+}

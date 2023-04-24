@@ -1,0 +1,22 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.review {
+  padding: 20px;
+}
+.element {
+  border: dotted brown;
+}
+.review__author {
+  font-size: 16px;
+}
+.review__name {
+  color: brown;
+  font-weight: 800;
+}
+.review__text {
+  font-size: 18px;
+}

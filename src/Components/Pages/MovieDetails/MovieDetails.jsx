@@ -66,6 +66,7 @@ export default function MovieDetails() {
               </p>
             </div>
           </div>
+
           <h3>Additional information</h3>
           <nav className={css.nav}>
             <NavLink to={`/movies/${movieId}/cast`} className={css.nav__link}>
@@ -80,12 +81,9 @@ export default function MovieDetails() {
           </nav>
           <Suspense fallback={<Loader />}>
             <Routes>
+              <Route path="cast" element={<Cast movieId={movieId} />}></Route>
               <Route
-                path={`/movies/${movieId}/cast`}
-                element={<Cast movieId={movieId} />}
-              ></Route>
-              <Route
-                path={`/movies/${movieId}/reviews`}
+                path="reviews"
                 element={<Reviews movieId={movieId} />}
               ></Route>
             </Routes>
