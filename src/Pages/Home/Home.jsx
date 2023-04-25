@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import MoviesGallery from '../../MoviesGallery/MoviesGallery';
-import { fetchTrendingMovies } from '../../Api/fetch';
+import MoviesGallery from '../../Components/MoviesGallery/MoviesGallery';
+import { fetchTrendingMovies } from '../../Components/Api/fetch';
 import css from './Home.module.css';
 
 export default function Home() {

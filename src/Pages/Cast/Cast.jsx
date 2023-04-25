@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchMovieCast, IMAGE_URL } from '../../Api/fetch';
+import { fetchMovieCast, IMAGE_URL } from '../../Components/Api/fetch';
 import css from './Cast.module.css';
 
 export default function Cast({ movieId }) {
@@ -18,7 +18,7 @@ export default function Cast({ movieId }) {
             src={IMAGE_URL + el.profile_path}
             alt={el.name}
           />
-          <p className={css.name} >{el.name}</p>
+          <p className={css.name}>{el.name}</p>
         </li>
       ))}
     </ul>

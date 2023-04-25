@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import {
+  Link,
   NavLink,
   useParams,
   useNavigate,
@@ -7,10 +8,10 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import Loader from '../../Loader/Loader';
-import { fetchMoviesId, IMAGE_URL } from '../../Api/fetch';
+import Loader from '../../Components/Loader/Loader';
+import { fetchMoviesId, IMAGE_URL } from '../../Components/Api/fetch';
 import css from './MovieDetails.module.css';
-import image from '../../../Images/no-image.png';
+import image from '../../Images/no-image.png';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
@@ -26,20 +27,17 @@ export default function MovieDetails() {
     });
   }, [movieId]);
 
-  const onGoBack = () => {
-    if (!location.state) {
-      navigate('/');
-      return;
-    }
-    navigate(`${location.state.from.pathname}${location.state.from.search}`);
-  };
+  const backLink = location.state?.from ?? '/';
+
   return (
     <div className={css.wrapper}>
       {movie && (
         <div className={css.container}>
-          <button type="button" className={css.button} onClick={onGoBack}>
-            ⮜ Back
-          </button>
+          <Link to={backLink}>
+            <button type="button" className={css.button}>
+              ⮜ Back
+            </button>
+          </Link>
           <div className={css.details}>
             <img
               src={
@@ -69,11 +67,16 @@ export default function MovieDetails() {
 
           <h3>Additional information</h3>
           <nav className={css.nav}>
-            <NavLink to={`/movies/${movieId}/cast`} className={css.nav__link}>
+            <NavLink
+              to={`/movies/${movieId}/cast`}
+              state={{ from: location.state?.from || '/' }}
+              className={css.nav__link}
+            >
               Cast
             </NavLink>
             <NavLink
               to={`/movies/${movieId}/reviews`}
+              state={{ from: location.state?.from || '/' }}
               className={css.nav__link}
             >
               Reviews

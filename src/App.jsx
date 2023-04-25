@@ -4,18 +4,12 @@ import Container from './Components/Container/Container';
 import Header from './Components/Header/Header';
 import Loader from './Components/Loader/Loader';
 
-const Home = lazy(() => import('./Components/Pages/Home/Home'));
-const MoviesPage = lazy(() =>
-  import('./Components/Pages/MoviesPage/MoviesPage')
-);
-const MovieDetails = lazy(() =>
-  import('./Components/Pages/MovieDetails/MovieDetails')
-);
-const NotFoundView = lazy(() =>
-  import('./Components/Pages/NotFoundView/NotFoundView')
-);
-const Cast = lazy(() => import('./Components/Pages/Cast/Cast'));
-const Reviews = lazy(() => import('./Components/Pages/Reviews/Reviews'));
+const Home = lazy(() => import('./Pages/Home/Home'));
+const MoviesPage = lazy(() => import('./Pages/MoviesPage/MoviesPage'));
+const MovieDetails = lazy(() => import('./Pages/MovieDetails/MovieDetails'));
+const NotFoundView = lazy(() => import('./Pages/NotFoundView/NotFoundView'));
+const Cast = lazy(() => import('./Pages/Cast/Cast'));
+const Reviews = lazy(() => import('./Pages/Reviews/Reviews'));
 export default function App() {
   return (
     <Container>

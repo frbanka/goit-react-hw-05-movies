@@ -11,13 +11,9 @@ const MoviesGallery = ({ movies }) => {
       {movies.map(movie => {
         return (
           <li key={movie.id} className={css.gallery__item}>
-            <Link
-              to={{
-                pathname: `/movies/${movie.id}`,
-                state: { from: location },
-              }}
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}
               className={css.gallery__link}
-            >
+              >
               <img
                 src={
                   movie.poster_path === null

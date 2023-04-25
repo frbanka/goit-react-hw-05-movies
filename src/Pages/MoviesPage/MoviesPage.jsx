@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Searchbar from '../../Searchbar/Searchbar';
-import MoviesGallery from '../../MoviesGallery/MoviesGallery';
-import { fetchMovieSearch } from '../../Api/fetch';
+import Searchbar from '../../Components/Searchbar/Searchbar';
+import MoviesGallery from '../../Components/MoviesGallery/MoviesGallery';
+import { fetchMovieSearch } from '../../Components/Api/fetch';
 
 export default function MoviesPage() {
   const [, setSearchQuery] = useState('');

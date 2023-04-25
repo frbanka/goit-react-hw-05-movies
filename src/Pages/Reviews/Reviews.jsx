@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchMovieReviews } from '../../Api/fetch';
+import { fetchMovieReviews } from '../../Components/Api/fetch';
 import css from './Reviews.module.css';
 export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([]);
