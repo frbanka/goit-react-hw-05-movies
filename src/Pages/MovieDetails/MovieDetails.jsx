@@ -3,7 +3,6 @@ import {
   Link,
   NavLink,
   useParams,
-  useNavigate,
   useLocation,
   Route,
   Routes,
@@ -16,7 +15,6 @@ import image from '../../Images/no-image.png';
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
 export default function MovieDetails() {
-  const navigate = useNavigate();
   const location = useLocation();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
