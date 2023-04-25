@@ -64,7 +64,6 @@ export default function MovieDetails() {
               </p>
             </div>
           </div>
-
           <h3>Additional information</h3>
           <nav className={css.nav}>
             <NavLink
